@@ -118,17 +118,15 @@ nav a:hover {
     align-items: center;
     animation: scroll-left 12s linear infinite;
     will-change: transform;
-    ;
+    gap: 9px; /* Separate logos with 8px */
 }
 
 .logo-container img {
-    height: 100px;
-    width: auto;
-    margin-right: 20px;
+    width: 200px; /* Set a fixed width */
+    height: 200px; /* Set a fixed height */
     object-fit: contain;
     flex-shrink: 0;
 }
-
 @keyframes scroll-left {
     0% {
         transform: translateX(100%);
@@ -388,6 +386,43 @@ section {
 /* Adjust the content section to account for the fixed filter section */
 .shop-page .content {
     margin-left: 300px; /* Adjust the margin to make space for the filter section */
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.pagination button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1rem; /* Font size */
+    margin: 0 4px; /* Margin between buttons */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.pagination button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
+}
+
+.pagination button:disabled {
+    background-color: #ddd; /* Gray background for disabled buttons */
+    cursor: not-allowed; /* Not-allowed cursor for disabled buttons */
+}
+
+.pagination span {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 1rem;
+    color: #333;
 }
 
 footer {
