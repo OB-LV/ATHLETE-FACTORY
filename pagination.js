@@ -68,3 +68,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderProducts();
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const filterForm = document.getElementById('filter-form');
+    const productContainer = document.getElementById('product-container');
+
+    filterForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        applyFilters();
+    });
+
+    function applyFilters() {
+        const category = document.getElementById('category').value;
+        const brand = document.getElementById('brand').value;
+        const priceRange = document.getElementById('price-range').value;
+
+        // Fetch and filter products based on the selected filters
+        // This is a placeholder for the actual filtering logic
+        // You can replace this with your own logic to fetch and filter products
+        const filteredProducts = products.filter(product => {
+            return (category === 'all' || product.category === category) &&
+                   (brand === 'all' || product.brand === brand) &&
+                   (priceRange === 'all' || isWithinPriceRange(product.price, priceRange));
+        });
+
+        renderProducts(filteredProducts);
+    }
+
+    function isWithinPriceRange(price, range) {
+        const [min, max] = range.split('-').map(Number);
+        return price >= min && price <= max;
+    }
+
+    function renderProducts(products) {
+        productContainer.innerHTML = '';
+        products.forEach(product => {
+            const productDiv = document.createElement('div');
+            productDiv.classList.add('product');
+            productDiv.innerHTML = `
+                <img src="${product.img}" alt="${product.name}">
+                <p>${product.name}</p>
+                <p>Price: $${product.price.toFixed(2)}</p>
+            `;
+            productContainer.appendChild(productDiv);
+        });
+    }
+
+    // Initial render of all products
+    renderProducts(products);
+});
