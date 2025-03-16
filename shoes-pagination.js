@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartCount = document.getElementById('cart-count');
 
     const products = [
-        { id: 1, img: 'img/shoe1.jpg', name: 'Shoe 1', category: 'shoes', brand: 'Brand 1', price: 100.00 },
-        { id: 2, img: 'img/shoe2.jpg', name: 'Shoe 2', category: 'shoes', brand: 'Brand 2', price: 120.00 },
-        { id: 3, img: 'img/shoe3.jpg', name: 'Shoe 3', category: 'shoes', brand: 'Brand 3', price: 140.00 },
-        { id: 4, img: 'img/shoe4.jpg', name: 'Shoe 4', category: 'shoes', brand: 'Brand 4', price: 160.00 },
-        { id: 5, img: 'img/shoe5.jpg', name: 'Shoe 5', category: 'shoes', brand: 'Brand 5', price: 180.00 },
-        { id: 6, img: 'img/shoe6.jpg', name: 'Shoe 6', category: 'shoes', brand: 'Brand 6', price: 200.00 },
+        { id: 1, img: 'img/new balance1.jpg', name: 'NEW BALANCE Elite White', category: 'shoes', brand: 'Brand 1', price: 200.00 },
+        { id: 2, img: 'img/shoe2.webp', name: 'PUMA ULTRABOOST', category: 'shoes', brand: 'Brand 2', price: 250.00 },
+        { id: 3, img: 'img/adidas3.jpeg', name: 'ADIDAS 3', category: 'shoes', brand: 'Brand 3', price: 120.00 },
+        { id: 4, img: 'img/adidas1.webp', name: 'ADIDAS FLY ONE1', category: 'shoes', brand: 'Brand 4', price: 300.00 },
+        { id: 5, img: 'img/shoe1.jpeg', name: 'PUMA FUJI4', category: 'shoes', brand: 'Brand 5', price: 250.00 },
+        { id: 6, img: 'img/nike1.jpeg', name: 'NIKE ZOOM1', category: 'shoes', brand: 'Brand 6', price: 180.00 },
         { id: 7, img: 'img/shoe7.jpg', name: 'Shoe 7', category: 'shoes', brand: 'Brand 7', price: 220.00 },
         { id: 8, img: 'img/shoe8.jpg', name: 'Shoe 8', category: 'shoes', brand: 'Brand 8', price: 240.00 },
         { id: 9, img: 'img/shoe9.jpg', name: 'Shoe 9', category: 'shoes', brand: 'Brand 9', price: 260.00 },

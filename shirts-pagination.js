@@ -6,16 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartCount = document.getElementById('cart-count');
 
     const products = [
-        { id: 1, img: 'img/shirt1.jpg', name: 'Shirt 1', category: 'shirts', brand: 'Brand 1', price: 50.00 },
-        { id: 2, img: 'img/shirt2.jpg', name: 'Shirt 2', category: 'shirts', brand: 'Brand 2', price: 60.00 },
-        { id: 3, img: 'img/shirt3.jpg', name: 'Shirt 3', category: 'shirts', brand: 'Brand 3', price: 70.00 },
-        { id: 4, img: 'img/shirt4.jpg', name: 'Shirt 4', category: 'shirts', brand: 'Brand 4', price: 80.00 },
-        { id: 5, img: 'img/shirt5.jpg', name: 'Shirt 5', category: 'shirts', brand: 'Brand 5', price: 90.00 },
-        { id: 6, img: 'img/shirt6.jpg', name: 'Shirt 6', category: 'shirts', brand: 'Brand 6', price: 100.00 },
-        { id: 7, img: 'img/shirt7.jpg', name: 'Shirt 7', category: 'shirts', brand: 'Brand 7', price: 110.00 },
-        { id: 8, img: 'img/shirt8.jpg', name: 'Shirt 8', category: 'shirts', brand: 'Brand 8', price: 120.00 },
-        { id: 9, img: 'img/shirt9.jpg', name: 'Shirt 9', category: 'shirts', brand: 'Brand 9', price: 130.00 },
-        { id: 10, img: 'img/shirt10.jpg', name: 'Shirt 10', category: 'shirts', brand: 'Brand 10', price: 140.00 }
+        { id: 1, img: 'img/under armor png.jpg', name: 'UNDER ARMOR GYM STYLE', category: 'shirts', brand: 'Brand 1', price: 75.00 },
+        { id: 2, img: 'img/product4.avif', name: 'ADIDAS Retro', category: 'shirts', brand: 'Brand 2', price: 99.99 },
+        { id: 3, img: 'img/puma3.avif', name: 'PUMA Summer Colection', category: 'shirts', brand: 'Brand 3', price: 80.00 },
+        { id: 4, img: 'img/puma.avif', name: 'PUMA Stylish', category: 'shirts', brand: 'Brand 4', price: 85.00 },
+        { id: 5, img: 'img/product3.webp', name: 'NIKE 2024 Edition', category: 'shirts', brand: 'Brand 5', price: 90.00 },
+        { id: 6, img: 'img/under armor2.webp', name: 'UNDER ARMOR Sport Way', category: 'shirts', brand: 'Brand 6', price: 60.00 },
+        { id: 7, img: 'img/puma1.avif', name: 'PUMA Outdoors Jogger', category: 'shirts', brand: 'Brand 7', price: 90.00 },
+        { id: 8, img: 'img/product6.webp', name: 'ADIDAS long Sleeve Classics', category: 'shirts', brand: 'Brand 8', price: 120.00 },
+        { id: 9, img: 'img/under armor1.jpeg', name: 'UNDER ARMOR Lifting', category: 'shirts', brand: 'Brand 9', price: 70.00 },
+        { id: 10, img: 'img/product2.jpg', name: 'NIKE FALL COLLECTION', category: 'shirts', brand: 'Brand 10', price: 140.00 }
     ];
 
     let currentPage = 1;
