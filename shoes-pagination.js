@@ -1,46 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const products = [
-        { img: 'img/shoe2.webp', name: 'PUMA Ultraboost', price: '$179.99' },
-        { img: 'img/shoe3.webp', name: 'PUMA Night Walker3', price: '$149.99' },
-        { img: 'img/adidas1.webp', name: 'ADIDAS FLY ONE', price: '$200.00' },
-        { img: 'img/new balance2.webp', name: 'NEW BALANCE Elite Edition', price: '$199.99' },
-        { img: 'img/asics love.webp', name: 'ASICS Dash', price: '$150.00' },
-        { img: 'img/fuji.png', name: 'NIKE Fuji4', price: '$250.00' },
-        { img: 'img/nike1.jpeg', name: 'NIKE ZOOM1', price: '$180.00' },
-        { img: 'img/nike3.jpg', name: 'NIKE ALY2', price: '$180.00' }
-    ];
-
-    const itemsPerPage = 6;
-    let currentPage = 1;
-    const totalPages = Math.ceil(products.length / itemsPerPage);
-
     const productContainer = document.getElementById('product-container');
     const prevPageButton = document.getElementById('prev-page');
     const nextPageButton = document.getElementById('next-page');
     const pageInfo = document.getElementById('page-info');
+    const cartCount = document.getElementById('cart-count');
 
-    function renderProducts() {
-        productContainer.innerHTML = '';
-        const start = (currentPage - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        const paginatedProducts = products.slice(start, end);
+    const products = [
+        { id: 1, img: 'img/shoe1.jpg', name: 'Shoe 1', category: 'shoes', brand: 'Brand 1', price: 100.00 },
+        { id: 2, img: 'img/shoe2.jpg', name: 'Shoe 2', category: 'shoes', brand: 'Brand 2', price: 120.00 },
+        { id: 3, img: 'img/shoe3.jpg', name: 'Shoe 3', category: 'shoes', brand: 'Brand 3', price: 140.00 },
+        { id: 4, img: 'img/shoe4.jpg', name: 'Shoe 4', category: 'shoes', brand: 'Brand 4', price: 160.00 },
+        { id: 5, img: 'img/shoe5.jpg', name: 'Shoe 5', category: 'shoes', brand: 'Brand 5', price: 180.00 },
+        { id: 6, img: 'img/shoe6.jpg', name: 'Shoe 6', category: 'shoes', brand: 'Brand 6', price: 200.00 },
+        { id: 7, img: 'img/shoe7.jpg', name: 'Shoe 7', category: 'shoes', brand: 'Brand 7', price: 220.00 },
+        { id: 8, img: 'img/shoe8.jpg', name: 'Shoe 8', category: 'shoes', brand: 'Brand 8', price: 240.00 },
+        { id: 9, img: 'img/shoe9.jpg', name: 'Shoe 9', category: 'shoes', brand: 'Brand 9', price: 260.00 },
+        { id: 10, img: 'img/shoe10.jpg', name: 'Shoe 10', category: 'shoes', brand: 'Brand 10', price: 280.00 }
+    ];
 
-        paginatedProducts.forEach(product => {
-            const productDiv = document.createElement('div');
-            productDiv.classList.add('product');
-            productDiv.innerHTML = `
-                <img src="${product.img}" alt="${product.name}">
-                <p>${product.name}</p>
-                <p>${product.price}</p>
-                <button>Add to Cart</button>
-            `;
-            productContainer.appendChild(productDiv);
-        });
-
-        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-        prevPageButton.disabled = currentPage === 1;
-        nextPageButton.disabled = currentPage === totalPages;
-    }
+    let currentPage = 1;
+    const itemsPerPage = 6;
+    let filteredProducts = products;
 
     prevPageButton.addEventListener('click', () => {
         if (currentPage > 1) {
@@ -50,11 +30,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     nextPageButton.addEventListener('click', () => {
-        if (currentPage < totalPages) {
+        if (currentPage < Math.ceil(filteredProducts.length / itemsPerPage)) {
             currentPage++;
             renderProducts();
         }
     });
 
+    function renderProducts() {
+        productContainer.innerHTML = '';
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const paginatedProducts = filteredProducts.slice(start, end);
+
+        paginatedProducts.forEach(product => {
+            const productDiv = document.createElement('div');
+            productDiv.classList.add('product');
+            productDiv.innerHTML = `
+                <img src="${product.img}" alt="${product.name}">
+                <p>${product.name}</p>
+                <p>Price: $${product.price.toFixed(2)}</p>
+                <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+            `;
+            productContainer.appendChild(productDiv);
+        });
+
+        pageInfo.textContent = `Page ${currentPage} of ${Math.ceil(filteredProducts.length / itemsPerPage)}`;
+        prevPageButton.disabled = currentPage === 1;
+        nextPageButton.disabled = currentPage === Math.ceil(filteredProducts.length / itemsPerPage);
+
+        // Add event listeners to "Add to Cart" buttons
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', addToCart);
+        });
+    }
+
+    function addToCart(event) {
+        const productId = event.target.getAttribute('data-id');
+        const product = products.find(p => p.id == productId);
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        updateCartCount();
+    }
+
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cartCount.textContent = cart.length;
+    }
+
+    // Initial render of all products
     renderProducts();
+    updateCartCount();
 });

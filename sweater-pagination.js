@@ -1,43 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const products = [
-        { img: 'img/adidas sweter men.jpg', name: 'ADIDAS Sweater', price: '$119.99' },
-        { img: 'img/puma jacket.avif', name: 'PUMA Street X', price: '$179.99' },
-        { img: 'img/sweater png.webp', name: 'adidas FALL DRI-FIT', price: '$180.00' },
-        { img: 'img/under armor sweter.jpeg', name: 'UNDER ARMOR GYM Sweater', price: '$179.99' },
-        { img: 'img/adidas sweter 1.jpg', name: 'Adidas Originals', price: '$250.00' }
-    ];
-
-    const itemsPerPage = 6;
-    let currentPage = 1;
-    const totalPages = Math.ceil(products.length / itemsPerPage);
-
     const productContainer = document.getElementById('product-container');
     const prevPageButton = document.getElementById('prev-page');
     const nextPageButton = document.getElementById('next-page');
     const pageInfo = document.getElementById('page-info');
+    const cartCount = document.getElementById('cart-count');
 
-    function renderProducts() {
-        productContainer.innerHTML = '';
-        const start = (currentPage - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        const paginatedProducts = products.slice(start, end);
+    const products = [
+        { id: 1, img: 'img/sweater1.jpg', name: 'Sweater 1', category: 'sweaters', brand: 'Brand 1', price: 50.00 },
+        { id: 2, img: 'img/sweater2.jpg', name: 'Sweater 2', category: 'sweaters', brand: 'Brand 2', price: 60.00 },
+        { id: 3, img: 'img/sweater3.jpg', name: 'Sweater 3', category: 'sweaters', brand: 'Brand 3', price: 70.00 },
+        { id: 4, img: 'img/sweater4.jpg', name: 'Sweater 4', category: 'sweaters', brand: 'Brand 4', price: 80.00 },
+        { id: 5, img: 'img/sweater5.jpg', name: 'Sweater 5', category: 'sweaters', brand: 'Brand 5', price: 90.00 },
+        { id: 6, img: 'img/sweater6.jpg', name: 'Sweater 6', category: 'sweaters', brand: 'Brand 6', price: 100.00 },
+        { id: 7, img: 'img/sweater7.jpg', name: 'Sweater 7', category: 'sweaters', brand: 'Brand 7', price: 110.00 },
+        { id: 8, img: 'img/sweater8.jpg', name: 'Sweater 8', category: 'sweaters', brand: 'Brand 8', price: 120.00 },
+        { id: 9, img: 'img/sweater9.jpg', name: 'Sweater 9', category: 'sweaters', brand: 'Brand 9', price: 130.00 },
+        { id: 10, img: 'img/sweater10.jpg', name: 'Sweater 10', category: 'sweaters', brand: 'Brand 10', price: 140.00 }
+    ];
 
-        paginatedProducts.forEach(product => {
-            const productDiv = document.createElement('div');
-            productDiv.classList.add('product');
-            productDiv.innerHTML = `
-                <img src="${product.img}" alt="${product.name}">
-                <p>${product.name}</p>
-                <p>${product.price}</p>
-                <button>Add to Cart</button>
-            `;
-            productContainer.appendChild(productDiv);
-        });
-
-        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-        prevPageButton.disabled = currentPage === 1;
-        nextPageButton.disabled = currentPage === totalPages;
-    }
+    let currentPage = 1;
+    const itemsPerPage = 6;
+    let filteredProducts = products;
 
     prevPageButton.addEventListener('click', () => {
         if (currentPage > 1) {
@@ -47,12 +30,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     nextPageButton.addEventListener('click', () => {
-        if (currentPage < totalPages) {
+        if (currentPage < Math.ceil(filteredProducts.length / itemsPerPage)) {
             currentPage++;
             renderProducts();
         }
     });
 
-    // Initial render
+    function renderProducts() {
+        productContainer.innerHTML = '';
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const paginatedProducts = filteredProducts.slice(start, end);
+
+        paginatedProducts.forEach(product => {
+            const productDiv = document.createElement('div');
+            productDiv.classList.add('product');
+            productDiv.innerHTML = `
+                <img src="${product.img}" alt="${product.name}">
+                <p>${product.name}</p>
+                <p>Price: $${product.price.toFixed(2)}</p>
+                <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+            `;
+            productContainer.appendChild(productDiv);
+        });
+
+        pageInfo.textContent = `Page ${currentPage} of ${Math.ceil(filteredProducts.length / itemsPerPage)}`;
+        prevPageButton.disabled = currentPage === 1;
+        nextPageButton.disabled = currentPage === Math.ceil(filteredProducts.length / itemsPerPage);
+
+        // Add event listeners to "Add to Cart" buttons
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', addToCart);
+        });
+    }
+
+    function addToCart(event) {
+        const productId = event.target.getAttribute('data-id');
+        const product = products.find(p => p.id == productId);
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        updateCartCount();
+    }
+
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cartCount.textContent = cart.length;
+    }
+
+    // Initial render of all products
     renderProducts();
+    updateCartCount();
 });
