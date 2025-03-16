@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCartCount() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cartCount.textContent = cart.reduce((sum, product) => sum + product.quantity, 0);
+        cartCount.textContent = cart.reduce((sum, product) => sum + product.quantity, 0)|| 'empty';
     }
 
     renderCart();
