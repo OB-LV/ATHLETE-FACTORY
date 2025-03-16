@@ -6,16 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartCount = document.getElementById('cart-count');
 
     const products = [
-        { id: 1, img: 'img/sweater1.jpg', name: 'Sweater 1', category: 'sweaters', brand: 'Brand 1', price: 50.00 },
-        { id: 2, img: 'img/sweater2.jpg', name: 'Sweater 2', category: 'sweaters', brand: 'Brand 2', price: 60.00 },
-        { id: 3, img: 'img/sweater3.jpg', name: 'Sweater 3', category: 'sweaters', brand: 'Brand 3', price: 70.00 },
-        { id: 4, img: 'img/sweater4.jpg', name: 'Sweater 4', category: 'sweaters', brand: 'Brand 4', price: 80.00 },
-        { id: 5, img: 'img/sweater5.jpg', name: 'Sweater 5', category: 'sweaters', brand: 'Brand 5', price: 90.00 },
-        { id: 6, img: 'img/sweater6.jpg', name: 'Sweater 6', category: 'sweaters', brand: 'Brand 6', price: 100.00 },
-        { id: 7, img: 'img/sweater7.jpg', name: 'Sweater 7', category: 'sweaters', brand: 'Brand 7', price: 110.00 },
-        { id: 8, img: 'img/sweater8.jpg', name: 'Sweater 8', category: 'sweaters', brand: 'Brand 8', price: 120.00 },
-        { id: 9, img: 'img/sweater9.jpg', name: 'Sweater 9', category: 'sweaters', brand: 'Brand 9', price: 130.00 },
-        { id: 10, img: 'img/sweater10.jpg', name: 'Sweater 10', category: 'sweaters', brand: 'Brand 10', price: 140.00 }
+        { id: 1, img: 'img/adidas sweter 1.jpg', name: 'ADIDAS ORIGINALS', category: 'sweaters', brand: 'Brand 1', price: 250.00 },
+        { id: 2, img: 'img/under armor sweter.jpeg', name: 'UNDER ARMOR SWEATER', category: 'sweaters', brand: 'Brand 2', price: 179.99 },
+        { id: 3, img: 'img/adidas sweter men.jpg', name: 'ADIDAS SWEATER', category: 'sweaters', brand: 'Brand 3', price: 119.00 },
+        { id: 4, img: 'img/under armor sweter1.avif', name: 'UNDER ARMOR HEAVY DUTY EDITION', category: 'sweaters', brand: 'Brand 4', price: 180.00 },
+        { id: 7, img: 'img/puma jacket.avif', name: 'PUMA STREET X', category: 'sweaters', brand: 'Brand 7', price: 179.99 },
+        { id: 9, img: 'img/sweater png.webp', name: 'ADIDAS FALL DRI-FIT', category: 'sweaters', brand: 'Brand 9', price: 180.00 },
     ];
 
     let currentPage = 1;

@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 4, img: 'img/adidas1.webp', name: 'ADIDAS FLY ONE1', category: 'shoes', brand: 'Brand 4', price: 300.00 },
         { id: 5, img: 'img/shoe1.jpeg', name: 'PUMA FUJI4', category: 'shoes', brand: 'Brand 5', price: 250.00 },
         { id: 6, img: 'img/nike1.jpeg', name: 'NIKE ZOOM1', category: 'shoes', brand: 'Brand 6', price: 180.00 },
-        { id: 7, img: 'img/shoe7.jpg', name: 'Shoe 7', category: 'shoes', brand: 'Brand 7', price: 220.00 },
-        { id: 8, img: 'img/shoe8.jpg', name: 'Shoe 8', category: 'shoes', brand: 'Brand 8', price: 240.00 },
-        { id: 9, img: 'img/shoe9.jpg', name: 'Shoe 9', category: 'shoes', brand: 'Brand 9', price: 260.00 },
-        { id: 10, img: 'img/shoe10.jpg', name: 'Shoe 10', category: 'shoes', brand: 'Brand 10', price: 280.00 }
+        { id: 7, img: 'img/shoe3.webp', name: 'PUMA NIGHT WALKER3', category: 'shoes', brand: 'Brand 7', price: 149.99 },
+        { id: 8, img: 'img/asics love.webp', name: 'ASICS DASH', category: 'shoes', brand: 'Brand 8', price: 150.00 },
+        { id: 9, img: 'img/nike3.jpg', name: 'NIKE ALY2', category: 'shoes', brand: 'Brand 9', price: 180.00 },
+        { id: 10, img: 'img/new balance2.webp', name: 'NEW BALANCE ELITE', category: 'shoes', brand: 'Brand 10', price: 199.00 }
     ];
 
     let currentPage = 1;
